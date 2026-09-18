@@ -240,15 +240,15 @@ public class Settings extends Observable {
 
     private static final String[] fontFamilySettingsKeys = {"EditorFontFamily", "EvenRowFontFamily",
             "OddRowFontFamily", " TextSegmentHighlightFontFamily", "TextSegmentDelayslotHighightFontFamily",
-            "ExplicitWriteHighlightFontFamily","ExplicitReadHighlightFontFamily", "MessagePaneFontFamily"
+            "ExplicitHighlightFontFamily","ExplicitHighlightFontFamily", "MessagePaneFontFamily"
     };
     private static final String[] fontStyleSettingsKeys = {"EditorFontStyle", "EvenRowFontStyle",
             "OddRowFontStyle", " TextSegmentHighlightFontStyle", "TextSegmentDelayslotHighightFontStyle",
-            "ExplicitWriteHighlightFontStyle", "ExplicitWriteHighlightFontStyle", "MessagePaneFontStyle"
+            "ExplicitHighlightFontStyle", "ExplicitHighlightFontStyle", "MessagePaneFontStyle"
     };
     private static final String[] fontSizeSettingsKeys = {"EditorFontSize", "EvenRowFontSize",
             "OddRowFontSize", " TextSegmentHighlightFontSize", "TextSegmentDelayslotHighightFontSize",
-            "ExplicitWriteHighlightFontSize", "ExplicitWriteHighlightFontSize", "MessagePaneFontSize"
+            "ExplicitHighlightFontSize", "ExplicitHighlightFontSize", "MessagePaneFontSize"
     };
 
 

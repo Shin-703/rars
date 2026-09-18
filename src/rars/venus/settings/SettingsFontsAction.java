@@ -14,7 +14,7 @@ import java.awt.*;
 import java.awt.event.*;
 
 /**
- * Action class for the Settings menu item for optionally loading a MIPS exception handler.
+ * Action class for the Settings menu item for font settings.
  */
 public class SettingsFontsAction extends GuiAction {
     JDialog fontDialog;
@@ -229,7 +229,7 @@ public class SettingsFontsAction extends GuiAction {
 
         for (int i = 0; i < numberOfRows; i++) {
             fontSetting = settings.getFontByPosition(fontSettingPositions[i]);
-            fontButtons[i].setFont(MonoRightCellRenderer.MONOSPACED_PLAIN_12POINT); //fontSetting);
+            fontButtons[i].setFont(MonoRightCellRenderer.MONOSPACED_PLAIN_12POINT);
             fontButtons[i].setMargin(new Insets(4, 4, 4, 4));
             initialFont[i] = currentFont[i] = fontSetting;
             currentNondefaultFont[i] = fontSetting;
