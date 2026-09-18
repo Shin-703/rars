@@ -19,18 +19,9 @@ import java.awt.event.*;
 public class SettingsFontsAction extends GuiAction {
     JDialog fontDialog;
 
-    private static final int[] rowsFontSettingPositions = {
-            Settings.TEXTSEGMENT_HIGHLIGHT_FONT,
-            Settings.TEXTSEGMENT_DELAYSLOT_HIGHLIGHT_FONT,
-            Settings.EXPLICIT_WRITE_HIGHLIGHT_FONT,
-            Settings.EXPLICIT_READ_HIGHLIGHT_FONT,
-            Settings.EVEN_ROW_FONT,
-            Settings.ODD_ROW_FONT
-    };
-
     private int numberOfRows = 3;
     private enum fontPositions {
-        // must follow same order, linked which each row of this setting menu
+        // must follow same order, linked with each row of this setting menu
         EDITOR_FONT(0), MESSAGE_PANE_FONT(1), ROWS_FONT(2);
 
         private final int pos;
@@ -42,8 +33,7 @@ public class SettingsFontsAction extends GuiAction {
     private static final int[] fontSettingPositions = {
         Settings.EDITOR_FONT,
         Settings.MESSAGE_PANE_FONT,
-        rowsFontSettingPositions[0] // can be any in rowsFontSettingPositions because
-        // we are always changing all the fonts together
+        Settings.EVEN_AND_ODD_ROW_FONT
     };
 
     JButton[] fontButtons;
@@ -247,12 +237,12 @@ public class SettingsFontsAction extends GuiAction {
     private void setFontSettings() {
         Settings settings = Globals.getSettings();
         // changes the font for all rows in memory, register and execute pane
-        for (int i = 0; i < rowsFontSettingPositions.length; i++)
-            settings.setFontByPosition(rowsFontSettingPositions[i], samples[fontPositions.ROWS_FONT.pos].getFont());
+        settings.setFontByPosition(Settings.EVEN_AND_ODD_ROW_FONT,
+            samples[fontPositions.ROWS_FONT.pos].getFont());
         // changes font for the Editor and Message Pane if new font set
-        settings.setFontByPosition(fontSettingPositions[fontPositions.EDITOR_FONT.pos], 
+        settings.setFontByPosition(Settings.EDITOR_FONT,
             samples[fontPositions.EDITOR_FONT.pos].getFont());
-        settings.setFontByPosition(fontSettingPositions[fontPositions.MESSAGE_PANE_FONT.pos], 
+        settings.setFontByPosition(Settings.MESSAGE_PANE_FONT,
             samples[fontPositions.MESSAGE_PANE_FONT.pos].getFont());
 
         ExecutePane executePane = Globals.getGui().getMainPane().getExecutePane();
@@ -327,7 +317,7 @@ public class SettingsFontsAction extends GuiAction {
             Font newFont = null;
             if (e.getStateChange() == ItemEvent.SELECTED) {
                 fontButtons[position].setEnabled(false);
-                newFont = Globals.getSettings().getDefaultFontByPosition(rowsFontSettingPositions[position]);
+                newFont = Globals.getSettings().getDefaultFontByPosition(Settings.EVEN_AND_ODD_ROW_FONT);
                 currentNondefaultFont[position] = samples[position].getFont();
             } else {
                 fontButtons[position].setEnabled(true);
