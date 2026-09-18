@@ -245,24 +245,20 @@ public abstract class RegisterBlockWindow extends JPanel implements Observer {
                                                        boolean isSelected, boolean hasFocus, int row, int column) {
             JLabel cell = (JLabel) super.getTableCellRendererComponent(table, value,
                     isSelected, hasFocus, row, column);
-            cell.setFont(font);
+            cell.setFont(settings.getFontByPosition(Settings.EVEN_AND_ODD_ROW_FONT));
             cell.setHorizontalAlignment(alignment);
             if (highlighting && stepAccessNotices.contains(row) && settings.getBooleanSetting(Settings.Bool.EXPLICIT_WRITE_HIGHLIGHTING) && stepAccessNotices.getAccessNoticeType(row) == AccessNotice.WRITE) {
                     cell.setBackground(settings.getColorSettingByPosition(Settings.EXPLICIT_WRITE_HIGHLIGHT_BACKGROUND));
                     cell.setForeground(settings.getColorSettingByPosition(Settings.EXPLICIT_WRITE_HIGHLIGHT_FOREGROUND));
-                    cell.setFont(settings.getFontByPosition(Settings.EVEN_AND_ODD_ROW_FONT));
             } else if (highlighting && stepAccessNotices.contains(row) && settings.getBooleanSetting(Settings.Bool.EXPLICIT_READ_HIGHLIGHTING) && stepAccessNotices.getAccessNoticeType(row) == AccessNotice.READ) {
                     cell.setBackground(settings.getColorSettingByPosition(Settings.EXPLICIT_READ_HIGHLIGHT_BACKGROUND));
                     cell.setForeground(settings.getColorSettingByPosition(Settings.EXPLICIT_READ_HIGHLIGHT_FOREGROUND));
-                    cell.setFont(settings.getFontByPosition(Settings.EVEN_AND_ODD_ROW_FONT));
             } else if (row % 2 == 0) {
                 cell.setBackground(settings.getColorSettingByPosition(Settings.EVEN_ROW_BACKGROUND));
                 cell.setForeground(settings.getColorSettingByPosition(Settings.EVEN_ROW_FOREGROUND));
-                cell.setFont(settings.getFontByPosition(Settings.EVEN_AND_ODD_ROW_FONT));
             } else {
                 cell.setBackground(settings.getColorSettingByPosition(Settings.ODD_ROW_BACKGROUND));
                 cell.setForeground(settings.getColorSettingByPosition(Settings.ODD_ROW_FOREGROUND));
-                cell.setFont(settings.getFontByPosition(Settings.EVEN_AND_ODD_ROW_FONT));
             }
             return cell;
         }
